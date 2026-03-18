@@ -22,11 +22,11 @@ export function Footer() {
               </span>
             </div>
             <p className="text-gray-300 text-lg leading-relaxed pr-4">
-              Compassionate Care. Dignified Recovery. A family-owned facility dedicated to your well-being.
+              Compassionate Care. Dignified Recovery. A family-owned facility serving North Miami Beach for over 30 years.
             </p>
             <div className="flex items-center gap-2 text-accent">
               <Heart className="w-5 h-5 fill-current" />
-              <span className="font-medium">Family Owned & Operated</span>
+              <span className="font-medium">Family Owned for Over 30 Years</span>
             </div>
           </div>
 
@@ -80,18 +80,20 @@ export function Footer() {
               <li className="flex items-start gap-4 text-gray-300">
                 <MapPin className="w-6 h-6 text-primary shrink-0 mt-0.5" />
                 <span>
-                  123 Hampton Court Blvd<br />
-                  North Miami Beach, FL 33160<br />
-                  <span className="text-sm text-gray-400 mt-1 block">[Placeholder Address]</span>
+                  16100 NW 2nd Ave<br />
+                  North Miami Beach, FL 33169
+                </span>
+              </li>
+              <li className="flex items-start gap-4 text-gray-300">
+                <Phone className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+                <span>
+                  <a href="tel:3053548800" className="hover:text-white transition-colors">Ph: 305-354-8800</a><br />
+                  <span className="text-sm text-gray-400">Fax: 305-354-8888</span>
                 </span>
               </li>
               <li className="flex items-center gap-4 text-gray-300">
-                <Phone className="w-6 h-6 text-primary shrink-0" />
-                <span>(305) 555-0100</span>
-              </li>
-              <li className="flex items-center gap-4 text-gray-300">
                 <Mail className="w-6 h-6 text-primary shrink-0" />
-                <span>admissions@hamptoncourt.example.com</span>
+                <span className="text-sm text-gray-400">[Email — contact facility directly]</span>
               </li>
               <li className="flex items-start gap-4 text-gray-300">
                 <Clock className="w-6 h-6 text-primary shrink-0 mt-0.5" />

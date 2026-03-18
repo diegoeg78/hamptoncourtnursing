@@ -69,8 +69,9 @@ export default function Contact() {
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
-                    <p className="font-semibold mb-1">Phone (Placeholder)</p>
-                    <p className="text-primary-foreground/80 text-lg">(305) 555-0100</p>
+                    <p className="font-semibold mb-1">Phone</p>
+                    <a href="tel:3053548800" className="text-primary-foreground/90 text-lg hover:text-white transition-colors font-medium">305-354-8800</a>
+                    <p className="text-primary-foreground/60 text-sm mt-0.5">Fax: 305-354-8888 / 305-354-8004</p>
                   </div>
                 </div>
 
@@ -79,10 +80,10 @@ export default function Contact() {
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
-                    <p className="font-semibold mb-1">Location (Placeholder)</p>
+                    <p className="font-semibold mb-1">Address</p>
                     <p className="text-primary-foreground/80">
-                      123 Hampton Court Blvd<br/>
-                      North Miami Beach, FL 33160
+                      16100 NW 2nd Ave<br/>
+                      North Miami Beach, FL 33169
                     </p>
                   </div>
                 </div>
@@ -93,7 +94,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-semibold mb-1">Email</p>
-                    <p className="text-primary-foreground/80">admissions@hamptoncourt.example.com</p>
+                    <p className="text-primary-foreground/70 text-sm">Contact us by phone or use the form — our admissions team responds within 24 hours.</p>
                   </div>
                 </div>
 
@@ -109,13 +110,17 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="bg-muted rounded-3xl h-64 flex items-center justify-center border-2 border-dashed border-border p-6 text-center">
-              <div>
-                <MapPin className="w-10 h-10 text-muted-foreground mx-auto mb-3 opacity-50" />
-                <p className="text-muted-foreground font-medium">Interactive Map Placeholder</p>
-                <p className="text-sm text-muted-foreground/70 mt-1">North Miami Beach, FL</p>
-              </div>
+            {/* Map Embed */}
+            <div className="bg-muted rounded-3xl h-64 overflow-hidden border border-border shadow-sm">
+              <iframe
+                title="Hampton Court Location"
+                src="https://www.google.com/maps?q=16100+NW+2nd+Ave+North+Miami+Beach+FL+33169&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </FadeIn>
 

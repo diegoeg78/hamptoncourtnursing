@@ -9,7 +9,7 @@ export default function About() {
         <FadeIn className="text-center max-w-3xl mx-auto mb-16">
           <h1 className="text-5xl font-display font-bold text-foreground mb-6">About Hampton Court</h1>
           <p className="text-xl text-muted-foreground">
-            A family-owned skilled nursing and rehabilitation center dedicated to providing compassionate care with dignity and respect.
+            A family-owned skilled nursing and rehabilitation center serving North Miami Beach with compassion and dedication for over 30 years.
           </p>
         </FadeIn>
 
@@ -17,19 +17,18 @@ export default function About() {
           <FadeIn direction="right">
             <div className="space-y-6 text-lg text-muted-foreground">
               <p>
-                At Hampton Court Nursing & Rehabilitation Center, we believe that high-quality medical care must be paired with genuine compassion. Located in the heart of North Miami Beach, our family-owned facility has been designed to feel less like a hospital and more like a home.
+                At Hampton Court Nursing &amp; Rehabilitation Center, we believe that high-quality medical care must be paired with genuine compassion. Located at 16100 NW 2nd Ave in North Miami Beach, our family-owned facility has been a trusted part of the community for over 30 years — designed to feel less like a hospital and more like a home.
               </p>
               <p>
-                Whether you or a loved one are joining us for a short-term rehabilitation stay following a hospital discharge, or seeking long-term skilled nursing support, our mission remains the same: to foster an environment of healing, comfort, and unwavering respect.
+                Whether you or a loved one are joining us for short-term rehabilitation following a hospital discharge, or seeking long-term skilled nursing support, our mission remains the same: to foster an environment of healing, comfort, and unwavering respect. Our dedicated Orthopedic and Spine Rehab Unit serves patients recovering from orthopedic surgery, spinal procedures, and related conditions.
               </p>
               <p>
-                Our multilingual, dedicated staff is deeply embedded in the local community. We understand the nuances of family dynamics and the stress that often accompanies healthcare transitions. That’s why we focus on transparent communication and family-centered care planning.
+                Our dedicated, multilingual staff is deeply embedded in the local community. We understand the nuances of family dynamics and the stress that often accompanies healthcare transitions — and we are rated by both the State and Federal government for quality of care. Families and doctors alike trust Hampton Court.
               </p>
             </div>
           </FadeIn>
           <FadeIn direction="left" className="relative">
             <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl relative">
-              {/* diverse medical staff talking with elderly woman */}
               <img 
                 src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=1000&q=80" 
                 alt="Compassionate staff at Hampton Court" 
@@ -48,17 +47,17 @@ export default function About() {
             { 
               icon: Heart, 
               title: "Compassionate Environment", 
-              desc: "A culture of warmth that prioritizes emotional well-being alongside physical health." 
+              desc: "A culture of warmth that prioritizes emotional well-being alongside physical health — built by a family-owned team that has cared for this community for over 30 years." 
             },
             { 
               icon: ShieldCheck, 
-              title: "Mission-Driven Care", 
-              desc: "Dedicated to clinical excellence and personalized recovery pathways for every individual." 
+              title: "Rated by State & Federal Government", 
+              desc: "Hampton Court is highly rated by Florida State and Federal health quality programs. Our standards reflect a commitment to safe, accountable, and excellent care." 
             },
             { 
               icon: Users, 
               title: "Dignity & Respect", 
-              desc: "Honoring the life experiences and personal preferences of every resident in our care." 
+              desc: "Honoring the life experiences and personal preferences of every resident in our care — always treating patients as we would our own family." 
             }
           ].map((val, i) => (
             <FadeIn key={i} delay={i * 0.1} className="bg-muted/30 p-8 rounded-2xl border border-border hover:shadow-md transition-all">

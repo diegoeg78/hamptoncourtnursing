@@ -55,11 +55,27 @@ export default function Services() {
     <div className="pt-24 pb-24 w-full bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <FadeIn className="text-center max-w-3xl mx-auto mb-20">
+        <FadeIn className="text-center max-w-3xl mx-auto mb-12">
           <h1 className="text-5xl font-display font-bold text-foreground mb-6">Our Services</h1>
           <p className="text-xl text-muted-foreground">
             Comprehensive care tailored to your specific medical needs and personal goals, delivered by a team that genuinely cares.
           </p>
+        </FadeIn>
+
+        {/* Orthopedic & Spine Spotlight */}
+        <FadeIn className="mb-20">
+          <div className="bg-primary text-primary-foreground rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 shadow-xl">
+            <div className="bg-white/20 p-6 rounded-2xl shrink-0">
+              <Activity className="w-14 h-14" />
+            </div>
+            <div>
+              <div className="inline-block bg-white/20 text-sm font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3">Featured Unit</div>
+              <h2 className="text-3xl font-display font-bold mb-3">Orthopedic &amp; Spine Rehab Unit</h2>
+              <p className="text-primary-foreground/85 text-lg leading-relaxed">
+                Our dedicated Orthopedic and Spine Rehab Unit provides specialized post-surgical recovery care for patients following joint replacements, spinal procedures, and orthopedic repairs. With focused physical and occupational therapy protocols, we help patients regain strength, mobility, and independence faster and more safely.
+              </p>
+            </div>
+          </div>
         </FadeIn>
 
         <div className="space-y-16">

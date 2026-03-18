@@ -52,7 +52,7 @@ export default function Home() {
 
             <FadeIn delay={0.2}>
               <p className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed">
-                A family-owned care facility in North Miami Beach dedicated to your comfort, recovery, and dignity.
+                A family-owned care facility in North Miami Beach — serving our community with compassion for over 30 years, including our specialized Orthopedic & Spine Rehab Unit.
               </p>
             </FadeIn>
 
@@ -78,10 +78,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x-0 md:divide-x divide-primary-foreground/20">
             {[
-              { icon: Stethoscope, title: "Skilled Nursing Support" },
-              { icon: Activity, title: "Rehabilitation Services" },
-              { icon: Heart, title: "Compassionate Care" },
-              { icon: Users, title: "Family-Focused Approach" }
+              { icon: Stethoscope, title: "Skilled Nursing 24/7" },
+              { icon: Activity, title: "Orthopedic & Spine Rehab" },
+              { icon: Heart, title: "Family Owned 30+ Years" },
+              { icon: Users, title: "Doctor Recommended" }
             ].map((item, i) => (
               <FadeIn key={i} delay={i * 0.1} className="flex flex-col items-center text-center px-4">
                 <item.icon className="w-10 h-10 mb-4 text-accent" strokeWidth={1.5} />
@@ -148,8 +148,8 @@ export default function Home() {
                       <Heart className="w-7 h-7" />
                     </div>
                     <div>
-                      <h4 className="font-display font-bold text-xl text-foreground">Family Owned</h4>
-                      <p className="text-muted-foreground">Serving North Miami Beach with love.</p>
+                      <h4 className="font-display font-bold text-xl text-foreground">Family Owned — 30+ Years</h4>
+                      <p className="text-muted-foreground">Serving North Miami Beach since the early 1990s.</p>
                     </div>
                   </div>
                 </div>

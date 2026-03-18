@@ -73,10 +73,10 @@ export function Navbar() {
               ))}
             </ul>
             <div className="flex items-center gap-4 border-l pl-6 border-border">
-              <div className="flex items-center gap-2 text-primary font-semibold">
+              <a href="tel:3053548800" className="flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors">
                 <Phone className="w-4 h-4" />
-                <span>(305) 555-0100</span>
-              </div>
+                <span>305-354-8800</span>
+              </a>
               <Link href="/contact" className="inline-block">
                 <Button className="rounded-full shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">
                   Schedule a Tour
@@ -119,10 +119,10 @@ export function Navbar() {
           </ul>
           <div className="h-px w-full bg-border my-2"></div>
           <div className="flex flex-col gap-4 px-4">
-            <div className="flex items-center gap-2 text-primary font-semibold">
+            <a href="tel:3053548800" className="flex items-center gap-2 text-primary font-semibold">
               <Phone className="w-5 h-5" />
-              <span>(305) 555-0100</span>
-            </div>
+              <span>305-354-8800</span>
+            </a>
             <Link href="/contact" className="w-full">
               <Button className="w-full rounded-xl py-6 text-lg shadow-md">
                 Schedule a Tour
