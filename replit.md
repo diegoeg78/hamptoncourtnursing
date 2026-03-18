@@ -2,7 +2,7 @@
 
 ## Overview
 
-pnpm workspace monorepo using TypeScript. Each package manages its own dependencies.
+pnpm workspace monorepo using TypeScript. Contains a full React + Vite website prototype for Hampton Court Nursing & Rehabilitation Center, served by an Express API backend.
 
 ## Stack
 
@@ -15,33 +15,70 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - **Validation**: Zod (`zod/v4`), `drizzle-zod`
 - **API codegen**: Orval (from OpenAPI spec)
 - **Build**: esbuild (CJS bundle)
+- **Frontend**: React + Vite + Tailwind CSS + shadcn/ui + framer-motion + react-hook-form
 
 ## Structure
 
 ```text
 artifacts-monorepo/
-├── artifacts/              # Deployable applications
-│   └── api-server/         # Express API server
+├── artifacts/
+│   ├── hampton-court/      # React + Vite frontend website (previewPath: /)
+│   │   └── src/
+│   │       ├── App.tsx
+│   │       ├── index.css
+│   │       ├── hooks/use-contact.ts
+│   │       ├── components/
+│   │       │   ├── animations/FadeIn.tsx
+│   │       │   ├── layout/Navbar.tsx
+│   │       │   └── layout/Footer.tsx
+│   │       └── pages/
+│   │           ├── Home.tsx
+│   │           ├── About.tsx
+│   │           ├── Services.tsx
+│   │           ├── Amenities.tsx
+│   │           ├── FAQ.tsx
+│   │           └── Contact.tsx
+│   └── api-server/         # Express API server (previewPath: /api)
+│       └── src/routes/
+│           ├── health.ts
+│           └── contact.ts  # POST /api/contact — contact form handler
 ├── lib/                    # Shared libraries
 │   ├── api-spec/           # OpenAPI spec + Orval codegen config
 │   ├── api-client-react/   # Generated React Query hooks
 │   ├── api-zod/            # Generated Zod schemas from OpenAPI
 │   └── db/                 # Drizzle ORM schema + DB connection
-├── scripts/                # Utility scripts (single workspace package)
-│   └── src/                # Individual .ts scripts, run via `pnpm --filter @workspace/scripts run <script>`
-├── pnpm-workspace.yaml     # pnpm workspace (artifacts/*, lib/*, lib/integrations/*, scripts)
-├── tsconfig.base.json      # Shared TS options (composite, bundler resolution, es2022)
-├── tsconfig.json           # Root TS project references
-└── package.json            # Root package with hoisted devDeps
+└── scripts/                # Utility scripts
 ```
+
+## Hampton Court Website
+
+A modern, responsive prototype website for a skilled nursing and rehabilitation center in North Miami Beach, FL.
+
+### Pages
+- `/` — Homepage (Hero, Trust Band, Services Overview, Why Choose Us, Patient Journey, Testimonials, CTA)
+- `/about` — About Us (family-owned story, mission, values)
+- `/services` — Services (24-hr nursing, physical/occupational/speech therapy, short-term rehab, long-term support)
+- `/amenities` — Amenities (rooms, therapy spaces, dining, common areas, outdoor spaces)
+- `/faq` — FAQ (accordion with 6 questions)
+- `/contact` — Contact & Admissions (inquiry form, placeholder phone/address/map)
+
+### Contact Form API
+- **POST** `/api/contact` — Accepts `{name, email, phone, message, relationship}`, returns `{success, message}`
+- Server logs submissions to console (TODO: wire up real email/CRM when going live)
+
+### Placeholder Data (to replace when going live)
+- Phone: (305) 555-0100
+- Address: 123 Hampton Court Blvd, North Miami Beach, FL 33160
+- Email: admissions@hamptoncourt.example.com
+- Testimonials: labeled as [Sample Family Story]
+- Map: placeholder block (no real embed yet)
 
 ## TypeScript & Composite Projects
 
 Every package extends `tsconfig.base.json` which sets `composite: true`. The root `tsconfig.json` lists all packages as project references. This means:
 
-- **Always typecheck from the root** — run `pnpm run typecheck` (which runs `tsc --build --emitDeclarationOnly`). This builds the full dependency graph so that cross-package imports resolve correctly. Running `tsc` inside a single package will fail if its dependencies haven't been built yet.
-- **`emitDeclarationOnly`** — we only emit `.d.ts` files during typecheck; actual JS bundling is handled by esbuild/tsx/vite...etc, not `tsc`.
-- **Project references** — when package A depends on package B, A's `tsconfig.json` must list B in its `references` array. `tsc --build` uses this to determine build order and skip up-to-date packages.
+- **Always typecheck from the root** — run `pnpm run typecheck` (which runs `tsc --build --emitDeclarationOnly`). This builds the full dependency graph so that cross-package imports resolve correctly.
+- **`emitDeclarationOnly`** — we only emit `.d.ts` files during typecheck; actual JS bundling is handled by esbuild/tsx/vite.
 
 ## Root Scripts
 
@@ -50,47 +87,14 @@ Every package extends `tsconfig.base.json` which sets `composite: true`. The roo
 
 ## Packages
 
+### `artifacts/hampton-court` (`@workspace/hampton-court`)
+
+React + Vite frontend, served at `/`. Uses Tailwind CSS, shadcn/ui components, framer-motion for animations, react-hook-form + zod for the contact form.
+
 ### `artifacts/api-server` (`@workspace/api-server`)
 
-Express 5 API server. Routes live in `src/routes/` and use `@workspace/api-zod` for request and response validation and `@workspace/db` for persistence.
-
-- Entry: `src/index.ts` — reads `PORT`, starts Express
-- App setup: `src/app.ts` — mounts CORS, JSON/urlencoded parsing, routes at `/api`
-- Routes: `src/routes/index.ts` mounts sub-routers; `src/routes/health.ts` exposes `GET /health` (full path: `/api/health`)
-- Depends on: `@workspace/db`, `@workspace/api-zod`
-- `pnpm --filter @workspace/api-server run dev` — run the dev server
-- `pnpm --filter @workspace/api-server run build` — production esbuild bundle (`dist/index.cjs`)
-- Build bundles an allowlist of deps (express, cors, pg, drizzle-orm, zod, etc.) and externalizes the rest
+Express 5 API server. Routes live in `src/routes/`. Has a contact form endpoint at `POST /api/contact`.
 
 ### `lib/db` (`@workspace/db`)
 
-Database layer using Drizzle ORM with PostgreSQL. Exports a Drizzle client instance and schema models.
-
-- `src/index.ts` — creates a `Pool` + Drizzle instance, exports schema
-- `src/schema/index.ts` — barrel re-export of all models
-- `src/schema/<modelname>.ts` — table definitions with `drizzle-zod` insert schemas (no models definitions exist right now)
-- `drizzle.config.ts` — Drizzle Kit config (requires `DATABASE_URL`, automatically provided by Replit)
-- Exports: `.` (pool, db, schema), `./schema` (schema only)
-
-Production migrations are handled by Replit when publishing. In development, we just use `pnpm --filter @workspace/db run push`, and we fallback to `pnpm --filter @workspace/db run push-force`.
-
-### `lib/api-spec` (`@workspace/api-spec`)
-
-Owns the OpenAPI 3.1 spec (`openapi.yaml`) and the Orval config (`orval.config.ts`). Running codegen produces output into two sibling packages:
-
-1. `lib/api-client-react/src/generated/` — React Query hooks + fetch client
-2. `lib/api-zod/src/generated/` — Zod schemas
-
-Run codegen: `pnpm --filter @workspace/api-spec run codegen`
-
-### `lib/api-zod` (`@workspace/api-zod`)
-
-Generated Zod schemas from the OpenAPI spec (e.g. `HealthCheckResponse`). Used by `api-server` for response validation.
-
-### `lib/api-client-react` (`@workspace/api-client-react`)
-
-Generated React Query hooks and fetch client from the OpenAPI spec (e.g. `useHealthCheck`, `healthCheck`).
-
-### `scripts` (`@workspace/scripts`)
-
-Utility scripts package. Each script is a `.ts` file in `src/` with a corresponding npm script in `package.json`. Run scripts via `pnpm --filter @workspace/scripts run <script>`. Scripts can import any workspace package (e.g., `@workspace/db`) by adding it as a dependency in `scripts/package.json`.
+Database layer using Drizzle ORM with PostgreSQL. No schema models defined yet — not needed for the static prototype.

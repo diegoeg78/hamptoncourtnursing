@@ -1,0 +1,16 @@
+packages:
+  "framer-motion": "For buttery smooth page transitions and scroll-triggered fade-ins that give a premium feel"
+  "react-hook-form": "For form state management"
+  "@hookform/resolvers": "For Zod validation with react-hook-form"
+
+images:
+  - path: "artifacts/hampton-court/public/images/logo.png"
+    description: "A minimalist, elegant logo mark for a premium family-owned healthcare and rehabilitation facility. Features a subtle, stylized abstract leaf or cross in muted teal and soft sage green. Transparent background."
+    aspect_ratio: "1:1"
+  - path: "artifacts/hampton-court/public/images/hero-texture.png"
+    description: "Soft, subtle, abstract watercolor background texture in very light warm beige and muted sage green. Perfect for a calming, trustworthy healthcare website background."
+    aspect_ratio: "16:9"
+
+notes:
+  - Mocking the POST /api/contact endpoint since this is a frontend-only prototype
+  - Using wouter for routing with standard multi-page architecture

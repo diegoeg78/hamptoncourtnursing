@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@plugin "@tailwindcss/typography";
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --font-sans: 'Nunito', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+}
+
+:root {
+  /* Warm calm trustworthy healthcare palette */
+  /* Background: Soft Warm White */
+  --background: 40 20% 98%;
+  /* Foreground: Dark Slate/Teal */
+  --foreground: 180 20% 20%;
+  
+  /* Primary: Muted Teal */
+  --primary: 180 40% 35%;
+  --primary-foreground: 0 0% 100%;
+  
+  /* Secondary: Soft Sage Green */
+  --secondary: 120 20% 70%;
+  --secondary-foreground: 180 30% 15%;
+  
+  /* Muted: Warm Gray */
+  --muted: 40 15% 92%;
+  --muted-foreground: 180 10% 45%;
+  
+  /* Accent: Lighter Teal */
+  --accent: 180 30% 90%;
+  --accent-foreground: 180 40% 30%;
+  
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 0 0% 100%;
+  
+  --border: 40 15% 88%;
+  --input: 40 15% 88%;
+  --ring: 180 40% 35%;
+  
+  --card: 0 0% 100%;
+  --card-foreground: 180 20% 20%;
+  --card-border: 40 15% 92%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 180 20% 20%;
+  --popover-border: 40 15% 92%;
+
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground text-lg leading-relaxed selection:bg-primary/20;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-semibold tracking-tight text-foreground;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-md border border-white/40 shadow-xl shadow-black/5;
+  }
+}
